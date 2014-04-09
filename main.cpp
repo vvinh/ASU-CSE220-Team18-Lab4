@@ -48,9 +48,9 @@ int main(int argc, const char * argv[]) {
 
 	printf("\nCross Reference Information\n");
 
-	printf("Identifier\t\t\Line Numbers\n");
+	printf("Identifier\t\tLine Numbers\n");
 
-	printf("----------\t\t\------------\n");
+	printf("----------\t\t------------\n");
 
 
 
