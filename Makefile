@@ -36,8 +36,7 @@ SOURCES = main.cpp \
           Scanner.cpp \
 	  Btree.cpp \
 	  Token.cpp \
-	  tmp.cpp \
-
+	  
 # Creates a macro named OBJECTS from SOURCES where each occurrence of .c in SOURCES is replaced by a .o in
 # OBJECTS. For example, if SOURCES=File1.c File2.c File3.c then OBJECTS would be File1.o File2.o File3.o.
 OBJECTS = $(SOURCES:.c=.o)
