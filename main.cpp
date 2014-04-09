@@ -34,16 +34,39 @@ int main(int argc, const char * argv[]) {
 		token = scanner.getToken(); //get a Token object
 		//if is Identifier then add to binary tree
 		if (token->getCode() == IDENTIFIER) {
-			aBtree.insertNode(aBtree.getRootNode(), token->getTokenString(),
-					token);
+
+			aBtree.insertNode(aBtree.getRootNodeAddr(), token->getTokenString(), token);
+
 		}
 		print.printToken(token); // build a line then print the line
+		fflush(stdout);
 		if (token->getCode() != PERIOD && token->getCode() != END_OF_FILE) {
 			delete token;  //Deallocate storage space
 		}
 	} while (token->getCode() != PERIOD && token->getCode() != END_OF_FILE);
 
+
+	printf("\nCross Reference Information\n");
+
+	printf("Identifier\t\t\Line Numbers\n");
+
+	printf("----------\t\t\------------\n");
+
+
+
+
+
 	aBtree.inOrder(aBtree.getRootNode());
+	//fflush(stdout);
+	//printf("\n\n");
+
+	//aBtree.postOrder(aBtree.getRootNode());
+	//fflush(stdout);
+	//printf("\n\n");
+	//aBtree.preOrder(aBtree.getRootNode());
+	//fflush(stdout);
+	//printf("\n\n");
+
 
 	delete token;  //Deallocate storage space
 	fclose(source_file);  //close the source file

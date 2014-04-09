@@ -75,13 +75,14 @@ void Token::setLeftChild(Token *childToken)
 }
 Token* Token::getLeftChild()
 {
-
-
     return this->leftChild;
-
 
 }
 
+
+Token** Token::getLeftChildAddr() {
+	return &(this->leftChild);
+}
 
 
 
@@ -96,4 +97,10 @@ Token* Token::getRightChild()
 {
     return this->rightChild;
 }
+
+
+Token** Token::getRightChildAddr() {
+	return &(this->rightChild);
+}
+
 

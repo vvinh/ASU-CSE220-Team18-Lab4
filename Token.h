@@ -56,10 +56,11 @@ public:
 
 	void setLeftChild(Token *childToken); //set current node left child
 	Token* getLeftChild();
+	Token** getLeftChildAddr();
 
 	void setRightChild(Token *childToken); // set current node right child
 	Token* getRightChild();
-
+	Token** getRightChildAddr();
 
 };
 
