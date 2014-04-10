@@ -22,11 +22,7 @@ void quit_scanner(FILE *src_file, Token *list);
 void add_token_to_list(Token *list, Token *new_token);
 
 int main(int argc, const char * argv[]) {
-	/******************************************
-	 `This is not a correct implementation, you will need to modfy this
-	 so that it satisfies the project problem.  Currently, this just
-	 prints every token and then deletes every token.
-	 *****************************************/
+	
 	Token *token = NULL;
 	char source_name[MAX_FILE_NAME_LENGTH];
 	char date[DATE_STRING_LENGTH];
