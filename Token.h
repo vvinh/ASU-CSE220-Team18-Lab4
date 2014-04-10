@@ -27,9 +27,10 @@ private:
 		char *stringLiteral;
 	} literal;
 	string tokenString;
+	string lineNumber;
 	//`What variables and methods am I missing to implement a binary tree.
 	Token* leftChild = NULL; //pointer to left node
-	Token* rightChild = NULL;// pointer to right node
+	Token* rightChild = NULL; // pointer to right node
 
 public:
 	Token();
@@ -51,8 +52,8 @@ public:
 	void setTokenString(string s);
 	string getTokenString();
 
-	void setNextToken(Token *newToken); // don't know what this is for?
-	Token* getNextToken();
+	//void setNextToken(Token *newToken); // don't know what this is for?
+	//Token* getNextToken();
 
 	void setLeftChild(Token *childToken); //set current node left child
 	Token* getLeftChild();
@@ -61,6 +62,9 @@ public:
 	void setRightChild(Token *childToken); // set current node right child
 	Token* getRightChild();
 	Token** getRightChildAddr();
+
+	void setLineNumber(string s);
+	string getLineNumber();
 
 };
 

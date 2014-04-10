@@ -51,6 +51,7 @@ public:
     Scanner(FILE *source_file, char source_name[], char date[], Print printer);
     ~Scanner();
     Token* getToken();
+    int getLineNumber();
 
 };
 

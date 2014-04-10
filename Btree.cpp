@@ -2,15 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-const char* const SYMBOL_STRINGS[] = { "<no token>", "<IDENTIFIER>", "<NUMBER>",
-		"<STRING>", "^", "*", "(", ")", "-", "+", "=", "[", "]", ":", ";", "<",
-		">", ",", ".", "/", ":=", "<=", ">=", "<>", "..", "<END OF FILE>",
-		"<ERROR>", "AND", "ARRAY", "BEGIN", "CASE", "CONST", "DIV", "DO",
-		"DOWNTO", "ELSE", "END", "FILE", "FOR", "FUNCTION", "GOTO", "IF", "IN",
-		"LABEL", "MOD", "NIL", "NOT", "OF", "OR", "PACKED", "PROCEDURE",
-		"PROGRAM", "RECORD", "REPEAT", "SET", "THEN", "TO", "TYPE", "UNTIL",
-		"VAR", "WHILE", "WITH", };
-
 Btree::Btree(Token* rootPointer) {
 	rootPtr = rootPointer;
 }
@@ -30,7 +21,8 @@ Token** Btree::getRootNodeAddr() {
 	return &rootPtr;
 }
 
-void Btree::insertNode(Token** ptr, string tokenString, Token* node) {
+void Btree::insertNode(Token** ptr, string tokenString, Token* node,
+		string pLineNum) {
 
 	//tree is empty
 	if (*ptr == NULL) {
@@ -44,6 +36,7 @@ void Btree::insertNode(Token** ptr, string tokenString, Token* node) {
 			(**ptr).setTokenString(node->getTokenString());
 			(**ptr).setLeftChild(NULL);
 			(**ptr).setRightChild(NULL);
+			(**ptr).setLineNumber(pLineNum);
 		} // end if
 
 	} else { // tree is not empty
@@ -53,19 +46,20 @@ void Btree::insertNode(Token** ptr, string tokenString, Token* node) {
 
 		if (tokenString.compare((*ptr)->getTokenString()) < 0) {
 
-			insertNode((*ptr)->getLeftChildAddr(), tokenString, node);
-
-			//fflush(stdout);
+			insertNode((*ptr)->getLeftChildAddr(), tokenString, node, pLineNum);
 
 		} // end if
 
 		// data to insert is greater than data in current node
 		else if (tokenString.compare((*ptr)->getTokenString()) > 0) {
-			insertNode((*ptr)->getRightChildAddr(), tokenString, node);
-			//fflush(stdout);
+			insertNode((*ptr)->getRightChildAddr(), tokenString, node,
+					pLineNum);
+
 		} // end else if
 		  // duplicate data value ignored
 		else if (tokenString.compare((*ptr)->getTokenString()) == 0) {
+
+			(*ptr)->setLineNumber(node->getLineNumber());
 
 			//printf("%s", "ignore duplicate");
 		} // end else
@@ -74,35 +68,15 @@ void Btree::insertNode(Token** ptr, string tokenString, Token* node) {
 
 }
 
-
 void Btree::inOrder(Token* ptr) {
 	// if tree is not empty, then traverse
 	if (ptr != NULL) {
 		inOrder(ptr->getLeftChild());
-		printf("%s\n", ptr->getTokenString().c_str());
+		//printf("%s\n", ptr->getTokenString().c_str());
+		printf("%s\t\t%s\n", ptr->getTokenString().c_str(),
+				ptr->getLineNumber().c_str());
+
 		inOrder(ptr->getRightChild());
 	} // end if
 } // end function inOrder
-
-
-void Btree::preOrder(Token* ptr) {
-
-	if (ptr != NULL) {
-		printf("%s\n", ptr->getTokenString().c_str());
-		preOrder(ptr->getLeftChild());
-		preOrder(ptr->getRightChild());
-	} // end if
-} // end function preOrder
-
-void Btree::postOrder(Token* ptr) {
-
-	if (ptr != NULL) {
-		postOrder(ptr->getLeftChild());
-		postOrder(ptr->getRightChild());
-		printf("%s\n", ptr->getTokenString().c_str());
-	} // end if
-} // end function postOrder
-
-
-
 

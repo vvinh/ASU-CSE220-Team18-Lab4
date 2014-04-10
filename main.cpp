@@ -12,6 +12,11 @@
 #include "Scanner.h"
 #include "Token.h"
 
+#include <iomanip>
+#include <locale>
+#include <sstream>
+#include <string> // this should be already included in <sstream>
+
 FILE *init_lister(const char *name, char source_file_name[], char dte[]);
 void quit_scanner(FILE *src_file, Token *list);
 void add_token_to_list(Token *list, Token *new_token);
@@ -35,7 +40,13 @@ int main(int argc, const char * argv[]) {
 		//if is Identifier then add to binary tree
 		if (token->getCode() == IDENTIFIER) {
 
-			aBtree.insertNode(aBtree.getRootNodeAddr(), token->getTokenString(), token);
+			int lNumber = scanner.getLineNumber();
+			ostringstream convert;   // stream used for the conversion
+			convert << lNumber; // insert the textual representation of 'Number' in the characters in the stream
+			string lineNumber = convert.str();
+
+			aBtree.insertNode(aBtree.getRootNodeAddr(), token->getTokenString(),
+					token, lineNumber);
 
 		}
 		print.printToken(token); // build a line then print the line
@@ -45,28 +56,13 @@ int main(int argc, const char * argv[]) {
 		}
 	} while (token->getCode() != PERIOD && token->getCode() != END_OF_FILE);
 
-
 	printf("\nCross Reference Information\n");
 
 	printf("Identifier\t\tLine Numbers\n");
 
 	printf("----------\t\t------------\n");
 
-
-
-
-
 	aBtree.inOrder(aBtree.getRootNode());
-	//fflush(stdout);
-	//printf("\n\n");
-
-	//aBtree.postOrder(aBtree.getRootNode());
-	//fflush(stdout);
-	//printf("\n\n");
-	//aBtree.preOrder(aBtree.getRootNode());
-	//fflush(stdout);
-	//printf("\n\n");
-
 
 	delete token;  //Deallocate storage space
 	fclose(source_file);  //close the source file

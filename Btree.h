@@ -14,7 +14,7 @@ public:
 	~Btree();
 	void setRootNode(Token* rootNodePtr);
 	Token* getRootNode();
-	void insertNode(Token** ptr, string tokenString, Token* node) ;
+	void insertNode(Token** ptr, string tokenString, Token* node, string pLineNum) ;
 	Token** getRootNodeAddr();
 	void inOrder(Token* ptr) ;
 	void postOrder(Token* ptr);

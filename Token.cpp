@@ -84,11 +84,6 @@ Token** Token::getLeftChildAddr() {
 	return &(this->leftChild);
 }
 
-
-
-
-
-
 void Token::setRightChild(Token *childToken)
 {
     this->rightChild = childToken;
@@ -98,9 +93,15 @@ Token* Token::getRightChild()
     return this->rightChild;
 }
 
-
 Token** Token::getRightChildAddr() {
 	return &(this->rightChild);
 }
 
-
+void Token::setLineNumber(string s)
+{
+    this->lineNumber = this->lineNumber + "\t\t" + s;
+}
+string Token::getLineNumber()
+{
+    return this->lineNumber;
+}
