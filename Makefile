@@ -42,7 +42,7 @@ SOURCES = main.cpp \
 OBJECTS = $(SOURCES:.c=.o)
 
 # This is the target of the makefile and also the name of the binary.
-TARGET = lab4
+TARGET = CrossReference
 
 # This rule states that the TARGET (lab3) depends on the OBJECTS, i.e., the binary depends on the .o
 # object code files. Therefore, to build binary, make will check to make sure all of the object code files
