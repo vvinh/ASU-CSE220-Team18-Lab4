@@ -66,7 +66,7 @@ string Token::getTokenString()
     return this->tokenString;
 }
 
-//`What methods am I missing to implement a binary tree.
+
 
 
 void Token::setLeftChild(Token *childToken)
