@@ -1,4 +1,4 @@
-Page    1  NEWTON.PAS  Wed Apr 09 18:22:56 2014
+Page    1  NEWTON.PAS  Wed Apr  9 23:01:33 2014
 
 
    1: PROGRAM newton (input, output);
@@ -16,7 +16,7 @@
    4:     epsilon = 1e-6;
     >> <IDENTIFIER>     epsilon
     >> =                =
-    >> <NUMBER>         1e-006 (real)
+    >> <NUMBER>         1e-06 (real)
     >> ;                ;
    5: 
    6: VAR
@@ -51,7 +51,7 @@
     >> )                )
     >> ;                ;
   14: 
-Page    2  NEWTON.PAS  Wed Apr 09 18:22:56 2014
+Page    2  NEWTON.PAS  Wed Apr  9 23:01:33 2014
 
 
   15: 	IF number = 0 THEN BEGIN
@@ -104,7 +104,7 @@
     >> (                (
     >> <IDENTIFIER>     number
     >> )                )
-Page    1  NEWTON.PAS  Wed Apr 09 18:22:56 2014
+Page    1  NEWTON.PAS  Wed Apr  9 23:01:33 2014
 
 
     >> ;                ;
@@ -157,7 +157,7 @@
     >> :                :
     >> <NUMBER>         6 (integer)
     >> ,                ,
-Page    3  NEWTON.PAS  Wed Apr 09 18:22:56 2014
+Page    3  NEWTON.PAS  Wed Apr  9 23:01:33 2014
 
 
   30: 			100*abs(root - sqroot)/sqroot:12:2,

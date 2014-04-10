@@ -82,6 +82,6 @@ include $(SOURCES:.cpp=.d)
 # command will cause the entire project to be rebuilt by recompiling every .c source code file.
 .PHONY: clean
 clean:
-	rm -f $(OBJECTS)
+	# rm -f $(OBJECTS)
 	rm -f *.d
 	rm -f $(TARGET)
